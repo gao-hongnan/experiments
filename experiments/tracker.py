@@ -11,12 +11,10 @@ StorageT = TypeVar("StorageT", bound=Storage)
 
 # NOTE: Context variables for async safety (better than thread-local)
 # We use Storage as the type parameter since it's the bound for StorageT
-_active_experiment: contextvars.ContextVar[Experiment[Storage] | None] = (
-    contextvars.ContextVar("_active_experiment", default=None)
+_active_experiment: contextvars.ContextVar[Experiment[Storage] | None] = contextvars.ContextVar(
+    "_active_experiment", default=None
 )
-_active_run: contextvars.ContextVar[Run[Storage] | None] = contextvars.ContextVar(
-    "_active_run", default=None
-)
+_active_run: contextvars.ContextVar[Run[Storage] | None] = contextvars.ContextVar("_active_run", default=None)
 
 
 @contextmanager
@@ -106,9 +104,7 @@ def run(name: str | None = None, **metadata: Any) -> Iterator[Run[Storage]]:
     """
     exp = _active_experiment.get()
     if not exp:
-        raise RuntimeError(
-            "No active experiment. Use experiment() context manager first."
-        )
+        raise RuntimeError("No active experiment. Use experiment() context manager first.")
 
     # NOTE: Use the experiment's run() context manager
     with exp.run(name or "", **metadata) as r:

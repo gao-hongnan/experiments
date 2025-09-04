@@ -41,9 +41,7 @@ def is_valid_run_id(value: str) -> TypeGuard[RunID]:
 
 
 def is_valid_metric_key(value: str) -> TypeGuard[MetricKey]:
-    return bool(
-        value and value.replace("_", "").replace("-", "").replace(".", "").isalnum()
-    )
+    return bool(value and value.replace("_", "").replace("-", "").replace(".", "").isalnum())
 
 
 class ExperimentMetadata(BaseModel):

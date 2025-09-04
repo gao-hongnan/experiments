@@ -21,9 +21,7 @@ class ExperimentError(Exception):
 
     def __init__(self, message: str, context: dict[str, Any] | None = None) -> None:
         self._message: Final[str] = message
-        self._context: Final[MappingProxyType[str, Any]] = MappingProxyType(
-            context or {}
-        )
+        self._context: Final[MappingProxyType[str, Any]] = MappingProxyType(context or {})
         super().__init__(message)
 
     @property

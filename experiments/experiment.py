@@ -99,9 +99,7 @@ class Run(Generic[StorageT]):
 
     def __enter__(self) -> Self:
         """Enter context - initialize storage."""
-        self.storage.initialize(
-            run_id=str(self.id), experiment_id=str(self.experiment_id)
-        )
+        self.storage.initialize(run_id=str(self.id), experiment_id=str(self.experiment_id))
         return self
 
     def __exit__(
@@ -148,9 +146,7 @@ class Experiment(Generic[StorageT]):
         id: str | None = None,
         **metadata: Any,
     ) -> None:
-        self.id = (
-            ExperimentID(id) if id else ExperimentID(f"{name}_{uuid.uuid4().hex[:8]}")
-        )
+        self.id = ExperimentID(id) if id else ExperimentID(f"{name}_{uuid.uuid4().hex[:8]}")
         self.name = name
         self._storage = storage
         self._completed = False
