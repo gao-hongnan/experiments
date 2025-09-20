@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from enum import StrEnum
 from pathlib import Path
-from typing import Any, Final, NewType, TypeAlias, TypeGuard
+from typing import Any, Final, NewType, TypeGuard
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -16,7 +16,7 @@ MetricKey = NewType("MetricKey", str)
 ArtifactKey = NewType("ArtifactKey", str)
 StorageKey = NewType("StorageKey", str)
 
-FilePath: TypeAlias = Path | str
+type FilePath = Path | str
 
 
 class ExperimentStatus(StrEnum):
