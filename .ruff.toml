@@ -24,7 +24,7 @@ exclude = [
 
 line-length = 120
 indent-width = 4
-target-version = "py312"
+target-version = "py314"
 output-format = "grouped"
 
 [lint]
@@ -85,6 +85,9 @@ ignore = [
 fixable = ["ALL"]
 unfixable = []
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.per-file-ignores]
+"tests/**/*.py" = ["ARG001", "SIM117"]
 
 [lint.isort]
 known-first-party = ["experiments"]
